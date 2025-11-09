@@ -1,0 +1,77 @@
+import time
+
+from df1.models.df1_serial_client import Df1SerialClient
+
+client = Df1SerialClient(
+    plc_type='ML 1000',
+    src=0x0,
+    dst=0x1,
+    port='COM5', # Use your port number
+    baudrate=9600,)
+
+client.connect()
+
+output =0
+
+for i in range(2):
+    print('Running',i+1)
+    start_time = time.time()
+
+    output += 1
+    output = 0 if output>15 else output
+
+    # Reading operations
+    try: 
+        # Read Integers
+        print('N7:0-2', client.read_n(file_table=7, start=0, total_int=3))
+        print('N7:0', client.read_n(file_table=7, start=0, total_int=1))
+        print('N7:1', client.read_n(file_table=7, start=1, total_int=1))
+        print('N7:2', client.read_n(file_table=7, start=2, total_int=1))
+
+        # Read Timer
+        print('Timer4:0 ACC', client.read_t(file_table=4, start=0, category='ACC'))
+        print('Timer4:0 PRE', client.read_t(file_table=4, start=0, category='PRE'))
+        print('Timer4:1 ACC', client.read_t(file_table=4, start=1, category='ACC'))
+        print('Timer4:1 PRE', client.read_t(file_table=4, start=1, category='PRE'))
+
+        # Read Counter
+        print('Counter5:0 PRE',client.read_c(file_table=5, start=0, category='PRE'))
+        print('Counter5:0 ACC',client.read_c(file_table=5, start=0, category='ACC'))
+        print('Counter5:1 PRE',client.read_c(file_table=5, start=1, category='PRE'))
+        print('Counter5:1 ACC',client.read_c(file_table=5, start=1, category='ACC'))
+
+        # Read Registers- CONTROL
+        print('R6:0-3', client.read_r(file_table=6, start=0, total_int=4))
+
+        # Read Binary bits words
+        print('B3:0/0', client.read_b(file_table=3, bit=0))
+        print('B3:0/1', client.read_b(file_table=3, bit=1))
+        print('B3:0/15', client.read_b(file_table=3, bit=15))
+        print('B3:0 Interger Value', client.read_b(file_table=3, bit=-1))
+
+        # Read Outputs
+        print('O0:0/1', client.read_o(file_table=0, bit=0))
+        
+        # Read Inputs
+        print('I1:0', client.read_i(file_table=1, bit=1))  # Read Inputs
+
+        # Read Float
+        print('Float8:0-1',client.read_f(file_table=8,start=0, total_float=2))  # Read Float
+        print('Float8:0',client.read_f(file_table=8,start=0, total_float=1))  # Read Float
+        print('Float8:1',client.read_f(file_table=8,start=1, total_float=1))  # Read Float
+        
+    except Exception as e:
+        print('[ERROR] Runtime error has happened',e)
+        client.reconnect()
+        
+    except KeyboardInterrupt:
+        print('Control+C')
+        break
+
+    end_time = time.time()
+    print('Elapsed(s)', end_time-start_time)
+    print('-------------------')
+
+client.close()
+
+print('end testing, total reconnect', client.reconnect_total())
