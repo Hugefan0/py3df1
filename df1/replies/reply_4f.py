@@ -10,7 +10,7 @@ class Reply4f(BaseDataFrame):
         super(Reply4f, self).__init__(**kwargs)
 
     def init_with_params(self, dst, src, tns, data):
-        super(Reply4f, self).init_with_params(src=src, dst=dst, cmd=0x4f, tns=tns, data=data)
+        super(Reply4f, self).init_with_params(src=src, dst=dst, cmd=0x4F, tns=tns, data=data)
 
     def get_data(self, file_type):
         if file_type in {FileType.ASCII, FileType.STATUS}:
@@ -37,7 +37,7 @@ class Reply4f(BaseDataFrame):
     def __pop_integer_data(self, data):
         data = list(data)
         while data:
-            yield (data.pop(0) & 0xff) + (data.pop(0) << 8)
+            yield (data.pop(0) & 0xFF) + (data.pop(0) << 8)
 
     def __pop_float_data(self, data):
         data = list(data)
