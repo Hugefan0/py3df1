@@ -44,5 +44,4 @@ This was done for all read and write calls. Again, very minor changes done to he
 
 --------------------------
 
-At time of writing, I have only tried reading serial with a ML 1000,
-I can't confirm that it works with SLC's.
+I have used this library with both ML 1000 and SLC  5/04's.
