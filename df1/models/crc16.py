@@ -48,7 +48,7 @@ def compute_crc(data):
     data.append(0x03)  # Because Allen Bradley...
     crc = INITIAL_DF1
     for a in data:
-        idx = table[(crc ^ a) & 0xff]
-        crc = ((crc >> 8) & 0xff) ^ idx
-    swapped = ((crc << 8) & 0xff00) | ((crc >> 8) & 0x00ff)
+        idx = table[(crc ^ a) & 0xFF]
+        crc = ((crc >> 8) & 0xFF) ^ idx
+    swapped = ((crc << 8) & 0xFF00) | ((crc >> 8) & 0x00FF)
     return swapped
