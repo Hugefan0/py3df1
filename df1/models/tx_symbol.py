@@ -12,4 +12,4 @@ class TxSymbol(Enum):
     ENQ = 0x05
     ACK = 0x06
     DLE = 0x10
-    NAK = 0x0f
+    NAK = 0x0F
