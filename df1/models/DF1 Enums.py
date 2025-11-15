@@ -20,7 +20,7 @@ class TxSymbol(Enum):
     ENQ = 0x05 # 0000 0101
     ACK = 0x06 # 0000 0110
     DLE = 0x10 # 0001 0000
-    NAK = 0x0f # 0000 1111
+    NAK = 0x0F # 0000 1111
     
 class FileType(Enum):
     """ from official doc page  7-17"""
@@ -31,12 +31,12 @@ class FileType(Enum):
     COUNTER = 0x87
     CONTROL = 0x88
     INTEGER = 0x89
-    FLOAT = 0x8a
-    OUT_LOGIC = 0x8b
-    IN_LOGIC = 0x8c
-    STRING = 0x8d
-    ASCII = 0x8e
-    BCD = 0x8f
+    FLOAT = 0x8A
+    OUT_LOGIC = 0x8B
+    IN_LOGIC = 0x8C
+    STRING = 0x8D
+    ASCII = 0x8E
+    BCD = 0x8F
     
 class TIMER(Enum):
     """ Timer attributes"""
@@ -120,12 +120,12 @@ class StsCodes(Enum):
     PROCESSOR_IN_PROGRAM_MODE = 0x70
     COMPATIBILITY_FILE_MISSING_OR_COMM_ZONE_PROBLEM = 0x80
     CANNOT_BUFFER_COMMAND = 0x90
-    WAIT_ACK_BUFFER_FULL = 0xa0
-    PROBLEM_DUE_TO_DOWNLOAD = 0xb0
-    WAIT_ACK_BUFFER_FULL_2 = 0xc0
-    UNUSED_1 = 0xd0
-    UNUSED_2 = 0xe0
-    ERROR_CODE_IN_EXT_STS_BYTE = 0xf0
+    WAIT_ACK_BUFFER_FULL = 0xA0
+    PROBLEM_DUE_TO_DOWNLOAD = 0xB0
+    WAIT_ACK_BUFFER_FULL_2 = 0xC0
+    UNUSED_1 = 0xD0
+    UNUSED_2 = 0xE0
+    ERROR_CODE_IN_EXT_STS_BYTE = 0xF0
     
 INITIAL_MODBUS = 0xFFFF
 INITIAL_DF1 = 0x0000
@@ -366,4 +366,5 @@ physical read 0F 09  7-13
 physical write 0F 08  7-14
 protected bit write 02       7-15
 protected typed file read 0F A7    7-16
+
 '''
