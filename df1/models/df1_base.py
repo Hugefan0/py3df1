@@ -852,11 +852,11 @@ class Df1BaseClient:
         raise SendReceiveError()
 
     def _get_initial_tns(self):  # pragma: nocover
-        return random.randint(0, 0xffff)
+        return random.randint(0, 0xFFFF)
 
     def _get_new_tns(self):
         self._last_tns += 1
-        if self._last_tns > 0xffff:
+        if self._last_tns > 0xFFFF:
             self._last_tns = 0x0
         return self._last_tns
 
