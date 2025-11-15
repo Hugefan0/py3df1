@@ -12,9 +12,9 @@ class FileType(Enum):
     COUNTER = 0x87
     CONTROL = 0x88
     INTEGER = 0x89
-    FLOAT = 0x8a
-    OUT_LOGIC = 0x8b
-    IN_LOGIC = 0x8c
-    STRING = 0x8d
-    ASCII = 0x8e
-    BCD = 0x8f
+    FLOAT = 0x8A
+    OUT_LOGIC = 0x8B
+    IN_LOGIC = 0x8C
+    STRING = 0x8D
+    ASCII = 0x8E
+    BCD = 0x8F
